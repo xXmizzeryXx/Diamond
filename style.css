@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  --glass: rgba(255, 255, 255, 0.08);
+  --shine: rgba(255, 255, 255, 0.15);
+  --border: rgba(255, 255, 255, 0.25);
+  --text: #e6f0ff;
+  --glow: #74c0ff;
+  --bg: linear-gradient(145deg, #0a0c10, #1c1f26);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#status-bar {
+  position: fixed;
+  top: 15px;
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 100;
+}
+
+.title {
+  margin-top: 100px;
+  font-size: 3rem;
+  background: linear-gradient(to right, #e0f7ff, #a1c4fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px var(--glow);
+}
+
+.tile-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 24px;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 640px;
+  z-index: 10;
+}
+
+.tile {
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background-color: var(--glass);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 30px 0;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.tile::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, var(--shine) 0%, transparent 60%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.tile:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px;
+  font-size: 0.85rem;
+  opacity: 0.5;
+  text-align: center;
+}
